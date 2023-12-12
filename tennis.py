@@ -54,7 +54,7 @@ def main(p_a: float = 0.5, p_b: float = 0.5):
     N_a = inv(np.identity(18) - Q_a)
     p_a_a = np.matmul(N_a, R_a)[0][0]
     p_b_a = 1 - p_a_a
-    
+
     Q_b = np.array([row[:18] for row in b_matrix[:18]])
     R_b = np.array([row[18:] for row in b_matrix[:18]])
     N_b = inv(np.identity(18) - Q_b)
@@ -144,10 +144,10 @@ def main(p_a: float = 0.5, p_b: float = 0.5):
     ]
 
     Q = np.array([row[:77] for row in set[:77]])
-    R = np.array([row[77:] for row in a_matrix[:77]])
+    R = np.array([row[77:] for row in set[:77]])
     N = inv(np.identity(77) - Q)
-    p_a = np.matmul(N_a, R_a)[0][0]
-    p_b = 1 - p_a_a
+    p_a = np.matmul(N, R)[0][0]
+    p_b = 1 - p_a
     print(f"[{p_a}, {p_b}]")
 
 if __name__ == "__main__":
